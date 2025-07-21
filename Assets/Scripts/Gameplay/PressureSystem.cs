@@ -64,11 +64,12 @@ namespace FlowCrush.Gameplay
         private void Start()
         {
             // Subscribe to match events
-            MatchDetector matchDetector = FindFirstObjectByType<MatchDetector>();
-            if (matchDetector != null)
-            {
-                matchDetector.OnMatchFound.AddListener(HandleMatchFound);
-            }
+            // Commented out MatchDetector for Sprint 1 prototype
+            // MatchDetector matchDetector = FindFirstObjectByType<MatchDetector>();
+            // if (matchDetector != null)
+            // {
+            //     matchDetector.OnMatchFound.AddListener(HandleMatchFound);
+            // }
             
             // Start pressure update coroutine
             StartCoroutine(UpdatePressureSystem());

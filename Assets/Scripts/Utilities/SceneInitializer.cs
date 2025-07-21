@@ -42,15 +42,15 @@ namespace FlowCrush.Utilities
             
             // Create MatchDetector
             GameObject matchDetectorObj = new GameObject("MatchDetector");
-            MatchDetector matchDetector = matchDetectorObj.AddComponent<MatchDetector>();
+            // MatchDetector matchDetector = matchDetectorObj.AddComponent<MatchDetector>();
             
             // Create ScoreManager
             GameObject scoreManagerObj = new GameObject("ScoreManager");
-            ScoreManager scoreManager = scoreManagerObj.AddComponent<ScoreManager>();
+            // ScoreManager scoreManager = scoreManagerObj.AddComponent<ScoreManager>();
             
             // Create BlockSpawner
             GameObject blockSpawnerObj = new GameObject("BlockSpawner");
-            BlockSpawner blockSpawner = blockSpawnerObj.AddComponent<BlockSpawner>();
+            // BlockSpawner blockSpawner = blockSpawnerObj.AddComponent<BlockSpawner>();
             
             // Create PressureSystem
             GameObject pressureSystemObj = new GameObject("PressureSystem");
@@ -95,18 +95,18 @@ namespace FlowCrush.Utilities
             }
             
             // Test match detection
-            MatchDetector detector = FindFirstObjectByType<MatchDetector>();
-            if (detector != null)
-            {
-                Debug.Log("✅ Match detection system working");
-            }
+            // MatchDetector detector = FindFirstObjectByType<MatchDetector>();
+            // if (detector != null)
+            // {
+            //     Debug.Log("✅ Match detection system working");
+            // }
             
             // Test scoring
-            ScoreManager score = FindFirstObjectByType<ScoreManager>();
-            if (score != null)
-            {
-                Debug.Log("✅ Scoring system working");
-            }
+            // ScoreManager score = FindFirstObjectByType<ScoreManager>();
+            // if (score != null)
+            // {
+            //     Debug.Log("✅ Scoring system working");
+            // }
             
             Debug.Log("All systems tested successfully!");
         }

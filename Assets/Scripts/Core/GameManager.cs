@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
 using FlowCrush.Input;
-using FlowCrush.Gameplay;
+// Commented out legacy BlockSpawner, MatchDetector, and ScoreManager references for Sprint 1 prototype
+// using FlowCrush.Gameplay;
 
 namespace FlowCrush.Core
 {
@@ -13,10 +14,10 @@ namespace FlowCrush.Core
         [Header("Game Systems")]
         [SerializeField] private GridManager gridManager;
         [SerializeField] private SimpleInputSystemManager touchInputManager;
-        [SerializeField] private BlockSpawner blockSpawner;
-        [SerializeField] private MatchDetector matchDetector;
-        [SerializeField] private PressureSystem pressureSystem;
-        [SerializeField] private ScoreManager scoreManager;
+        // private BlockSpawner blockSpawner;
+        // private MatchDetector matchDetector;
+        // private PressureSystem pressureSystem;
+        // private ScoreManager scoreManager;
         
         [Header("Game Settings")]
         [SerializeField] private float gameStartDelay = 1f;
@@ -77,29 +78,29 @@ namespace FlowCrush.Core
                 Debug.Log($"GameManager: SimpleInputSystemManager found: {touchInputManager != null}");
             }
             
-            if (blockSpawner == null) 
-            {
-                blockSpawner = FindFirstObjectByType<BlockSpawner>();
-                Debug.Log($"GameManager: BlockSpawner found: {blockSpawner != null}");
-            }
+            // if (blockSpawner == null) 
+            // {
+            //     blockSpawner = FindFirstObjectByType<BlockSpawner>();
+            //     Debug.Log($"GameManager: BlockSpawner found: {blockSpawner != null}");
+            // }
             
-            if (matchDetector == null) 
-            {
-                matchDetector = FindFirstObjectByType<MatchDetector>();
-                Debug.Log($"GameManager: MatchDetector found: {matchDetector != null}");
-            }
+            // if (matchDetector == null) 
+            // {
+            //     matchDetector = FindFirstObjectByType<MatchDetector>();
+            //     Debug.Log($"GameManager: MatchDetector found: {matchDetector != null}");
+            // }
             
-            if (pressureSystem == null) 
-            {
-                pressureSystem = FindFirstObjectByType<PressureSystem>();
-                Debug.Log($"GameManager: PressureSystem found: {pressureSystem != null}");
-            }
+            // if (pressureSystem == null) 
+            // {
+            //     pressureSystem = FindFirstObjectByType<PressureSystem>();
+            //     Debug.Log($"GameManager: PressureSystem found: {pressureSystem != null}");
+            // }
             
-            if (scoreManager == null) 
-            {
-                scoreManager = FindFirstObjectByType<ScoreManager>();
-                Debug.Log($"GameManager: ScoreManager found: {scoreManager != null}");
-            }
+            // if (scoreManager == null) 
+            // {
+            //     scoreManager = FindFirstObjectByType<ScoreManager>();
+            //     Debug.Log($"GameManager: ScoreManager found: {scoreManager != null}");
+            // }
             
             // Subscribe to events
             if (touchInputManager != null)
@@ -112,15 +113,15 @@ namespace FlowCrush.Core
                 Debug.LogWarning("GameManager: No SimpleInputSystemManager found - input won't work!");
             }
             
-            if (matchDetector != null)
-            {
-                matchDetector.OnMatchFound.AddListener(HandleMatchFound);
-                Debug.Log("GameManager: Subscribed to match events");
-            }
-            else
-            {
-                Debug.LogWarning("GameManager: No MatchDetector found - matches won't be processed!");
-            }
+            // if (matchDetector != null)
+            // {
+            //     matchDetector.OnMatchFound.AddListener(HandleMatchFound);
+            //     Debug.Log("GameManager: Subscribed to match events");
+            // }
+            // else
+            // {
+            //     Debug.LogWarning("GameManager: No MatchDetector found - matches won't be processed!");
+            // }
             
             Debug.Log("GameManager: System initialization complete");
         }
@@ -134,7 +135,7 @@ namespace FlowCrush.Core
             
             // Initialize game systems
             if (gridManager != null) gridManager.InitializeGrid();
-            if (scoreManager != null && enableScoring) scoreManager.ResetScore();
+            // if (scoreManager != null && enableScoring) scoreManager.ResetScore();
             
             Debug.Log($"Game Started - FlowCrush Sprint 1 (Delay: {gameStartDelay}s)");
         }
@@ -163,10 +164,10 @@ namespace FlowCrush.Core
             OnGameOver?.Invoke();
             
             // Save final score
-            if (scoreManager != null)
-            {
-                scoreManager.SaveFinalScore();
-            }
+            // if (scoreManager != null)
+            // {
+            //     scoreManager.SaveFinalScore();
+            // }
         }
         
         public void HandleSwipeInput(SwipeDirection swipeDirection)
@@ -180,11 +181,11 @@ namespace FlowCrush.Core
                 gridManager.ProcessSwipe(swipeDirection);
             }
             
-            if (blockSpawner != null)
-            {
-                // Spawn new blocks from opposite direction
-                blockSpawner.SpawnBlocksFromDirection(swipeDirection, 3);
-            }
+            // if (blockSpawner != null)
+            // {
+            //     // Spawn new blocks from opposite direction
+            //     blockSpawner.SpawnBlocksFromDirection(swipeDirection, 3);
+            // }
         }
         
         public void HandleMatchFound(Match match)
@@ -192,16 +193,16 @@ namespace FlowCrush.Core
             if (currentGameState != GameState.Playing) return;
             
             // Process match through scoring system
-            if (scoreManager != null)
-            {
-                scoreManager.AddScore(match);
-            }
+            // if (scoreManager != null)
+            // {
+            //     scoreManager.AddScore(match);
+            // }
             
             // Apply pressure system effects
-            if (pressureSystem != null && enablePressureSystem)
-            {
-                pressureSystem.ApplyPressureToMatch(match);
-            }
+            // if (pressureSystem != null && enablePressureSystem)
+            // {
+            //     pressureSystem.ApplyPressureToMatch(match);
+            // }
         }
         
         public GameState GetCurrentGameState()

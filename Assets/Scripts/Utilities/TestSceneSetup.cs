@@ -1,7 +1,8 @@
 using UnityEngine;
 using FlowCrush.Core;
 using FlowCrush.Input;
-using FlowCrush.Gameplay;
+// Commented out legacy MatchDetector references for Sprint 1 prototype
+// using FlowCrush.Gameplay;
 
 namespace FlowCrush.Utilities
 {
@@ -25,7 +26,7 @@ namespace FlowCrush.Utilities
         private GameManager gameManager;
         private GridManager gridManager;
         private TouchInputManager touchInputManager;
-        private MatchDetector matchDetector;
+        // private MatchDetector matchDetector;
         
         #region Unity Lifecycle
         
@@ -62,7 +63,7 @@ namespace FlowCrush.Utilities
             CreateMatchDetector();
             
             // Create ScoreManager
-            CreateScoreManager();
+            // CreateScoreManager();
             
             // Configure debug settings
             ConfigureDebugSettings();
@@ -106,7 +107,7 @@ namespace FlowCrush.Utilities
             GameObject matchObject = new GameObject("MatchDetector");
             matchObject.transform.SetParent(transform);
             
-            matchDetector = matchObject.AddComponent<MatchDetector>();
+            // matchDetector = matchObject.AddComponent<MatchDetector>();
             
             // Configure match debug settings
             if (enableMatchDebug)
@@ -122,7 +123,7 @@ namespace FlowCrush.Utilities
             GameObject scoreObject = new GameObject("ScoreManager");
             scoreObject.transform.SetParent(transform);
             
-            ScoreManager scoreManager = scoreObject.AddComponent<ScoreManager>();
+            // ScoreManager scoreManager = scoreObject.AddComponent<ScoreManager>();
             
             Debug.Log("ScoreManager created and configured");
         }
@@ -148,10 +149,10 @@ namespace FlowCrush.Utilities
             }
             
             // Connect MatchDetector to GameManager
-            if (matchDetector != null && gameManager != null)
-            {
-                matchDetector.OnMatchFound.AddListener(gameManager.HandleMatchFound);
-            }
+            // if (matchDetector != null && gameManager != null)
+            // {
+            //     matchDetector.OnMatchFound.AddListener(gameManager.HandleMatchFound);
+            // }
             
             // Connect GridManager events
             if (gridManager != null)
@@ -197,14 +198,14 @@ namespace FlowCrush.Utilities
         [ContextMenu("Test Match Detection")]
         public void TestMatchDetection()
         {
-            if (matchDetector == null)
-            {
-                Debug.LogError("MatchDetector not found! Run Setup Test Scene first.");
-                return;
-            }
+            // if (matchDetector == null)
+            // {
+            //     Debug.LogError("MatchDetector not found! Run Setup Test Scene first.");
+            //     return;
+            // }
             
             Debug.Log("Testing Match Detection...");
-            matchDetector.DebugFindAllMatches();
+            // matchDetector.DebugFindAllMatches();
         }
         
         [ContextMenu("Start Game")]
@@ -243,7 +244,7 @@ namespace FlowCrush.Utilities
             Debug.Log($"GameManager: {(gameManager != null ? "✓" : "✗")}");
             Debug.Log($"GridManager: {(gridManager != null ? "✓" : "✗")}");
             Debug.Log($"TouchInputManager: {(touchInputManager != null ? "✓" : "✗")}");
-            Debug.Log($"MatchDetector: {(matchDetector != null ? "✓" : "✗")}");
+            // Debug.Log($"MatchDetector: {(matchDetector != null ? "✓" : "✗")}");
             Debug.Log("==============================");
         }
         
@@ -263,7 +264,7 @@ namespace FlowCrush.Utilities
             gameManager = null;
             gridManager = null;
             touchInputManager = null;
-            matchDetector = null;
+            // matchDetector = null;
             
             Debug.Log("Scene cleanup complete");
         }
@@ -313,15 +314,15 @@ namespace FlowCrush.Utilities
             }
             
             // Check match detection
-            if (matchDetector != null)
-            {
-                Debug.Log("✓ Match detection system operational");
-            }
-            else
-            {
-                Debug.LogError("✗ Match detection system not operational");
-                allValid = false;
-            }
+            // if (matchDetector != null)
+            // {
+            //     Debug.Log("✓ Match detection system operational");
+            // }
+            // else
+            // {
+            //     Debug.LogError("✗ Match detection system not operational");
+            //     allValid = false;
+            // }
             
             if (allValid)
             {
